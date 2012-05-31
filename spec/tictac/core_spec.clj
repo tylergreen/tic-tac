@@ -7,7 +7,7 @@
               (should (legal-move? (rand 9) (empty-board)))
               (should-not (legal-move? 3
                                        (place :x 3 (empty-board) )))
-              (should-not (legal-move? 100 (empty)))
+              (should-not (legal-move? 100 (empty-board)))
                )
           (it "can have a winner"
               (should (not (winner? (empty-board))))

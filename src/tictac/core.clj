@@ -38,7 +38,10 @@
   (vec (repeat 9 :empty)))
 
 (defn print-board [board]
-  (doall (map prn (rows (replace {:empty :_} board)))))
+  (doall
+   (map prn (rows
+             (map-indexed #(str %1 %2)
+                          (replace {:empty :_} board))))))
 
 (defn streak? [seq]
   (and
@@ -60,7 +63,7 @@
 
 (defn read-input []
   (try (read)
-       (catch Exception e (str "Please enter a number 0-8"))))
+       (catch Exception e false)))
 
 (defn other [player]
   (if (= player :X)
