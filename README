@@ -1,13 +1,14 @@
 # tictac
 
-FIXME: write description
+Tic Tac Toe Game
 
 ## Usage
 
-FIXME: write
+lein repl
+(play-game)
 
 ## License
 
-Copyright (C) 2012 FIXME
+Copyright (C) 2012 Tyler Green
 
 Distributed under the Eclipse Public License, the same as Clojure.
