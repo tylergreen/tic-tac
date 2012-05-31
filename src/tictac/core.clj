@@ -30,10 +30,6 @@
    [2 4 6]]
   ))
 
-(defn legal-move? [i board]
-  (and (>= 8 i) (>= i 0)
-       (= :empty (nth board i))))
-
 (defn empty-board []
   (vec (repeat 9 :empty)))
 
@@ -59,7 +55,11 @@
    (not (winner? board))))
 
 (defn valid-input? [input]
-  (some #{input} (range 10)))
+  (some #{input} (range 9)))
+
+(defn legal-move? [i board]
+  (and (>= 8 i) (>= i 0)
+   (= :empty (nth board i))))
 
 (defn read-input []
   (try (read)
@@ -85,9 +85,10 @@
     (cond (winner? board) (str "Player " (other player) " Wins")
           (tie? board) "Cat Game!"
           true (let [input (read-input)]
-                 (if (legal-move? input board)
+                 (if (and (valid-input? input)
+                          (legal-move? input board))
                    (recur (place player input board) (other player))
-                   (do (prn "Illegal move, try again!")
+                   (do (prn "Invalid input or illegal move, try again!")
                        (recur board player)))))))
 
                 
